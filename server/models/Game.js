@@ -5,7 +5,7 @@ const gameSchema = Schema(
   {
     title: { type: String, required: true, unique: false, default: "" },
     release_date: { type: String, required: false, unique: false },
-    genre: { type: String, required: false, unique: false, default: "" },
+    genre: { type: Array, required: false, unique: false, default: "" },
     developer: { type: String, require: false, unique: false, default: "" },
     publisher: { type: String, require: false, unique: false, default: "" },
     description: { type: String, require: true, unique: false, default: "" },

@@ -16,7 +16,7 @@ const getAll = () => async (dispatch) => {
 
 const createGame = (game) => async (dispatch) => {
     try {
-        dispatch({ type: types.CREATE_START });
+        dispatch({ type: types.CREATE_REQUEST });
         const { data } = await api.post('/games', game);
         dispatch({ type: types.CREATE_SUCCESS, payload: data });
     } catch (error) {
@@ -26,7 +26,7 @@ const createGame = (game) => async (dispatch) => {
 
 const updateGame = (game) => async (dispatch) => {
     try {
-        dispatch({ type: types.UPDATE_START });
+        dispatch({ type: types.UPDATE_REQUEST });
         const { data } = await api.patch(`/games/${game._id}`, game);
         dispatch({ type: types.UPDATE_SUCCESS, payload: data });
     } catch (error) {
@@ -36,7 +36,7 @@ const updateGame = (game) => async (dispatch) => {
 
 const deleteGame = (game) => async (dispatch) => {
     try {
-        dispatch({ type: types.DELETE_START });
+        dispatch({ type: types.DELETE_REQUEST });
         const { data } = await api.delete(`/games/${game._id}`);
         dispatch({ type: types.DELETE_SUCCESS, payload: data });
     } catch (error) {

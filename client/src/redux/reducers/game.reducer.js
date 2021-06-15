@@ -13,7 +13,7 @@ const gameReducer = (state = initialState, action) => {
         case types.GET_REQUEST:
             return { ...state, loading: true }
         case types.GET_SUCCESS:
-            return { ...state, movies: payload }
+            return { ...state, games: payload }
         case types.GET_FAILURE:
             return { ...state, loading: false };
         case types.CREATE_REQUEST:

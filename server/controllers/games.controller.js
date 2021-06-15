@@ -22,14 +22,14 @@ gameController.create = catchAsync(async (req, res, next) => {
 
 
 gameController.list = catchAsync(async (req, res, next) => {
-    const games = await Game.find({}).review
+    const games = await Game.find({})
     sendResponse(res, 201, true, { games }, null, "Get all games successfully")
 });
 
 gameController.viewDetailedPage = catchAsync(async (req, res, next) => {
-  const games = await Game.findOne(req.params.id).review;
-  await games.populate("reviews").populate("ratings");
-  sendResponse(res, 201, true, { games }, null, "Individual Game");
+    const games = await Game.findOne(req.params.id).review;
+    await games.populate("reviews").populate("ratings");
+    sendResponse(res, 201, true, { games }, null, "Individual Game");
 });
 
 gameController.update = catchAsync(async (req, res, next) => {
