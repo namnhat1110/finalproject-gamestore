@@ -12,6 +12,8 @@ function HomePage() {
     dispatch(gameActions.getAll());
   }, [dispatch]);
 
+  // Add random
+
   return (
     <div>
       <Row>
