@@ -7,7 +7,6 @@ import { HomePage, LoginPage, AuthPage, FourOhFourPage } from "./pages";
 function App() {
   return (
     <div className="App">
-
       <Switch>
         <Route exact path={`/login`} component={LoginPage} />
         <Route exact path={`/register`} component={AuthPage} />
