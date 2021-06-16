@@ -22,7 +22,8 @@ gameController.create = catchAsync(async (req, res, next) => {
 
 
 gameController.list = catchAsync(async (req, res, next) => {
-    const games = await Game.find({})
+    // const games = await Game.find({})
+    const games = ["Nam", "Loi", "Khoa"]
     sendResponse(res, 201, true, { games }, null, "Get all games successfully")
 });
 

@@ -14,6 +14,18 @@ const getAll = () => async (dispatch) => {
     }
 };
 
+const getSingleGame = (gameId) => async (dispatch) => {
+    try {
+        dispatch({ type: types.GET_SINGLE_REQUEST });
+        const { data } = await api.get(`/games/${gameId}`);
+        console.log({ foo: 'bar', data })
+        dispatch({ type: types.GET_SINGLE_SUCCESS, payload: data.data.games });
+    } catch (error) {
+        dispatch({ type: types.GET_SINGLE_FAILURE });
+        console.log({ error });
+    }
+};
+
 const createGame = (game) => async (dispatch) => {
     try {
         dispatch({ type: types.CREATE_REQUEST });
