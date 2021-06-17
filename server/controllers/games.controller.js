@@ -13,9 +13,10 @@ gameController.create = catchAsync(async (req, res, next) => {
         await game.save()
         sendResponse(res, 201, true, { game }, null, "Create game successfully")
     } catch (error) {
+        console.log('Nam')
         res.status(400).json({
             success: false,
-            error: err.message,
+            error: error.message,
         });
     }
 });
@@ -29,7 +30,7 @@ gameController.list = catchAsync(async (req, res, next) => {
 
 gameController.viewDetailedPage = catchAsync(async (req, res, next) => {
     const { id } = req.params;
-    const game = await Game.findOne({ game_id: id });
+    const game = await Game.findOne({ _id: id });
     // await games.populate("reviews").populate("ratings");
     sendResponse(res, 201, true, { game }, null, "Individual Game");
 });

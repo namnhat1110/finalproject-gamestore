@@ -15,6 +15,7 @@ const getAll = () => async (dispatch) => {
 };
 
 const getSingleGame = (id) => async (dispatch) => {
+    console.log({ id })
     dispatch({ type: types.GET_SINGLE_REQUEST });
     try {
         const { data } = await api.get(`/games/${id}`);
