@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Card, Col, Row } from 'react-bootstrap'
+import { Nav, Card, Col, Row } from 'react-bootstrap'
 import { gameActions } from "../redux/actions";
+import { Link } from 'react-router-dom'
 
 function HomePage() {
 
@@ -60,6 +61,9 @@ function HomePage() {
                       </Card.Text>
                       <hr className="solid"></hr>
                       <Card.Text> Publisher: {m.publisher}</Card.Text>
+                      <Nav.Link as={Link} to={`games/${m._id}`}>
+                        View Detail
+                      </Nav.Link>
                     </Card.Body>
                   </Card>
                 </Col>

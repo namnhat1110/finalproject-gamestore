@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const gameSchema = Schema(
   {
+    game_id: { type: String, required: true, unique: true, default: "" },
     title: { type: String, required: true, unique: false, default: "" },
     release_date: { type: String, required: false, unique: false },
     genre: { type: Array, required: false, unique: false, default: "" },

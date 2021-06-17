@@ -3,25 +3,25 @@ import * as types from "../constants/game.constants";
 import api from "../api";
 
 const getAll = () => async (dispatch) => {
+    dispatch({ type: types.GET_REQUEST, payload: null });
     try {
-        dispatch({ type: types.GET_REQUEST });
         const { data } = await api.get("/games");
         console.log({ foo: 'bar', data })
         dispatch({ type: types.GET_SUCCESS, payload: data.data.games });
     } catch (error) {
-        dispatch({ type: types.GET_FAILURE });
+        dispatch({ type: types.GET_FAILURE, payload: null });
         console.log({ error });
     }
 };
 
-const getSingleGame = (gameId) => async (dispatch) => {
+const getSingleGame = (id) => async (dispatch) => {
+    dispatch({ type: types.GET_SINGLE_REQUEST });
     try {
-        dispatch({ type: types.GET_SINGLE_REQUEST });
-        const { data } = await api.get(`/games/${gameId}`);
-        console.log({ foo: 'bar', data })
+        const { data } = await api.get(`/games/${id}`);
+        console.log({ foo: 'hi', data })
         dispatch({ type: types.GET_SINGLE_SUCCESS, payload: data.data.games });
     } catch (error) {
-        dispatch({ type: types.GET_SINGLE_FAILURE });
+        dispatch({ type: types.GET_SINGLE_FAILURE, payload: null });
         console.log({ error });
     }
 };
@@ -58,6 +58,7 @@ const deleteGame = (game) => async (dispatch) => {
 
 const gameActions = {
     getAll,
+    getSingleGame,
     createGame,
     updateGame,
     deleteGame
