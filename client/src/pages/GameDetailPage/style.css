@@ -1,0 +1,13 @@
+.detail-page {
+    text-align: justify;
+}
+
+/* .main-info {
+    height: 30vh;
+} */
+
+.carousel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

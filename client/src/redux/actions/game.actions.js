@@ -20,7 +20,7 @@ const getSingleGame = (id) => async (dispatch) => {
     try {
         const { data } = await api.get(`/games/${id}`);
         console.log({ foo: 'hi', data })
-        dispatch({ type: types.GET_SINGLE_SUCCESS, payload: data.data.games });
+        dispatch({ type: types.GET_SINGLE_SUCCESS, payload: data.data.game });
     } catch (error) {
         dispatch({ type: types.GET_SINGLE_FAILURE, payload: null });
         console.log({ error });

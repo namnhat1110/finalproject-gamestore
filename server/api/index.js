@@ -7,4 +7,7 @@ const router = express.Router();
 const gamesRouter = require("./games.api");
 router.use("/games", gamesRouter);
 
+const authRouter = require("./auth.api");
+router.use('/auth', authRouter)
+
 module.exports = router;
