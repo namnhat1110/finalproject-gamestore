@@ -2,8 +2,9 @@ import { Route, Switch } from "react-router-dom";
 
 import "./App.css";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { HomePage, ProfilePage, CartPage, FourOhFourPage, WishlistPage } from "./pages";
+import { ProfilePage, CartPage, FourOhFourPage, WishlistPage } from "./pages";
 import GameDetailPage from "./pages/GameDetailPage";
+import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
 import NavigationBar from "./components/NavigationBar"
 

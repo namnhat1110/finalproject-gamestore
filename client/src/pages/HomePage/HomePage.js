@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
+import "./style.css"
 
 import { useDispatch, useSelector } from "react-redux";
-import { Nav, Card, Col, Row } from 'react-bootstrap'
-import { gameActions } from "../redux/actions";
+import { Nav, Card, Col, Row, Form } from "react-bootstrap";
+import { gameActions } from "../../redux/actions";
 import { Link } from 'react-router-dom'
 
-function HomePage() {
+export default function HomePage() {
+  console.log('Homepage')
 
   const dispatch = useDispatch();
   const games = useSelector((state) => state.game.games)
@@ -15,11 +18,58 @@ function HomePage() {
 
   // Add random
 
+  const renderYearFilter = () => {
+    return (
+      <Form.Group className="mb-3" controlId="formStart">
+        <Form.Label>Start</Form.Label>
+        <Form.Control type="number" placeholder="2010" />
+        <Form.Label>End</Form.Label>
+        <Form.Control type="number" placeholder={ new Date().getFullYear()} />
+      </Form.Group>
+    );
+  }
+
+  // ['Fighting', 'RPG', 'FPS']
+  const [selectedGenres, setSelectedGenres] = useState([])
+
+  const renderSidebar = () => {
+    return (
+      <Col lg="3" className="sidebar">
+        <h1>Genre</h1>
+        <Form>
+          {["FPS", "RPG", "Fighting"].map((type) => (
+            <div key={`default-radio ${type}`} className="mb-3">
+              <Form.Check
+                type={"radio"}
+                id={`default-radio ${type}`}
+                label={`${type}`}
+              />
+            </div>
+          ))}
+        </Form>
+        <h1>Years</h1>
+        {renderYearFilter()}
+        <h1>Developer</h1>
+        <Form>
+          {["Blizzard", "Epic Games", "Riot Games", "Konami"].map((type) => (
+            <div key={`default-radio ${type}`} className="mb-3">
+              <Form.Check
+                type={"radio"}
+                id={`default-radio ${type}`}
+                label={`${type}`}
+              />
+            </div>
+          ))}
+        </Form>
+      </Col>
+    );
+  };
+
   return (
     <div>
       <Row>
-        <Col lg="3">
-        </Col>
+        {renderSidebar()}
+
         <Col lg="9">
           <Row>
             {games?.map((m) => {
@@ -31,7 +81,9 @@ function HomePage() {
                         style={{
                           height: 50,
                         }}
-                      >{m.title}</Card.Title>
+                      >
+                        {m.title}
+                      </Card.Title>
                       <hr className="solid"></hr>
                       <Card.Text
                         style={{
@@ -43,9 +95,7 @@ function HomePage() {
                         {m.description}
                       </Card.Text>
                       <hr className="solid"></hr>
-                      <Card.Text>
-                        Genre: {m.genre}
-                      </Card.Text>
+                      <Card.Text>Genre: {m.genre}</Card.Text>
                       <hr className="solid"></hr>
                       <Card.Text>
                         Average vote: {m.avg_vote} from {m.votes} votes
@@ -76,4 +126,3 @@ function HomePage() {
   );
 }
 
-export { HomePage };
